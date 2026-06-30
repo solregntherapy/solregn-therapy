@@ -177,12 +177,6 @@ export default function ContactPage() {
 
               <div className="border-t border-[#d8d0c5]/80 pt-6 text-center">
                 <p className="mx-auto max-w-xl text-sm leading-7 text-[#4f5f4b]/65">
-                  This form currently opens your email app. A proper form,
-                  booking calendar, intake system, and payment flow can be
-                  connected later.
-                </p>
-
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#4f5f4b]/65">
                   Please do not use this form for crisis or emergency support.
                 </p>
               </div>
