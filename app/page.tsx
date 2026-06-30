@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <main className="home-page">
@@ -76,12 +74,9 @@ export default function Home() {
 
         <div className="hero-vase" aria-hidden="true">
           <div className="vase-shadow" />
-          <Image
+          <img
             src="/images/hero-vase.png"
             alt=""
-            width={894}
-            height={1424}
-            priority
             className="vase-image"
           />
         </div>
