@@ -329,11 +329,11 @@ a:hover {
 
   .hero-vase {
     display: block;
-    width: 170px;
-    height: 270px;
-    right: 50%;
-    bottom: calc(var(--shelf-height) - 12px);
-    transform: translateX(50%);
-    opacity: 0.32;
+    width: 135px;
+    height: 215px;
+    right: 8vw;
+    bottom: 72px;
+    transform: none;
+    opacity: 0.22;
   }
 }
