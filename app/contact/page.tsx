@@ -195,6 +195,34 @@ export default function ContactPage() {
               solregntherapy@gmail.com
             </a>
           </div>
+
+          <div className="mt-12 border-t border-[#d8d0c5]/80 pt-10 text-center">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+              For Practitioners
+            </p>
+
+            <h2
+              className="mx-auto max-w-2xl text-[clamp(2rem,7vw,3.8rem)] font-normal leading-[0.98] tracking-[0.04em]"
+              style={{ fontFamily: "var(--font-heading), serif" }}
+            >
+              Interested in joining the Solregn referral network?
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-2xl text-[1rem] leading-8 text-[#4f5f4b]/75 sm:text-lg sm:leading-9">
+              Therapists, psychiatrists, physicians, nutritionists, coaches,
+              educators, and allied professionals are welcome to share their
+              details for future referral conversations.
+            </p>
+
+            <div className="mt-8">
+              <a
+                href="/referral-network"
+                className="inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-[#4f5f4b] transition hover:bg-[#c58a5c] hover:text-[#f4f1ec]"
+              >
+                Join referral network
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
