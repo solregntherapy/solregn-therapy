@@ -325,44 +325,58 @@ a:hover {
 
   .hero-copy {
     inset: var(--nav-height) 0 var(--shelf-height) 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 22px 18px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 34px 20px 0;
   }
 
   .hero-copy-inner {
     width: min(430px, 92vw);
+    margin: 0 auto;
   }
 
   .hero-copy h1 {
-    font-size: clamp(44px, 13.5vw, 58px);
-    line-height: 1.06;
-    letter-spacing: 0.115em;
+    font-size: clamp(40px, 12.5vw, 54px);
+    line-height: 1.08;
+    letter-spacing: 0.105em;
   }
 
   .hero-line {
-    width: 66px;
-    margin: 24px auto 22px;
+    width: 64px;
+    margin: 22px auto 20px;
   }
 
   .hero-copy p {
-    font-size: clamp(23px, 6.5vw, 29px);
+    font-size: clamp(21px, 6.1vw, 27px);
     line-height: 1.42;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.018em;
   }
 
   .tiny-leaf {
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .tiny-leaf svg {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   .hero-vase {
-    display: none;
+    display: block;
+    z-index: 20;
+    width: 118px;
+    height: 188px;
+    right: 8vw;
+    bottom: calc(var(--shelf-height) - 6px);
+    transform: none;
+    opacity: 0.26;
+  }
+
+  .vase-shadow {
+    width: 115px;
+    height: 26px;
+    bottom: -8px;
+    opacity: 0.55;
   }
 
   .stone-shelf {
@@ -371,12 +385,24 @@ a:hover {
 }
 
 @media (max-width: 380px) {
+  .hero-copy {
+    padding-top: 28px;
+  }
+
   .hero-copy h1 {
-    font-size: clamp(40px, 13vw, 50px);
-    letter-spacing: 0.1em;
+    font-size: clamp(37px, 12vw, 48px);
+    letter-spacing: 0.095em;
   }
 
   .hero-copy p {
-    font-size: clamp(21px, 6.2vw, 25px);
+    font-size: clamp(20px, 5.8vw, 24px);
+  }
+
+  .hero-vase {
+    width: 105px;
+    height: 168px;
+    right: 7vw;
+    bottom: calc(var(--shelf-height) - 6px);
+    opacity: 0.24;
   }
 }
