@@ -100,7 +100,7 @@ a:hover {
 }
 
 .desktop-nav-links {
-  transform: translateX(42px);
+  transform: translateX(72px);
 }
 
 .nav-item {
@@ -310,7 +310,7 @@ a:hover {
   position: absolute;
   z-index: 60;
   right: 8.5vw;
-  bottom: calc(var(--shelf-height) - 24px);
+  bottom: calc(var(--shelf-height) - 54px);
   width: 250px;
   height: 398px;
   display: block;
