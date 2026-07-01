@@ -99,6 +99,10 @@ a:hover {
   white-space: nowrap;
 }
 
+.desktop-nav-links {
+  transform: translateX(42px);
+}
+
 .nav-item {
   position: relative;
 }
@@ -410,6 +414,7 @@ a:hover {
 
   .desktop-nav-links {
     display: none;
+    transform: none;
   }
 
   .mobile-menu {
