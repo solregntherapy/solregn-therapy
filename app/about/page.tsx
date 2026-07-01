@@ -1,102 +1,301 @@
+const navGroups = [
+  {
+    label: "About",
+    href: "/about",
+    links: [
+      { label: "About Solregn", href: "/about" },
+      { label: "About Founder", href: "/about" },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    links: [
+      { label: "Individual Therapy", href: "/services" },
+      { label: "Couples Therapy", href: "/services" },
+      { label: "Supervision", href: "/services" },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+    links: [
+      { label: "Emotional Regulation", href: "/resources" },
+      { label: "Anxiety & Overthinking", href: "/resources" },
+      { label: "Crisis Support", href: "/resources" },
+    ],
+  },
+  {
+    label: "Workshops",
+    href: "/workshops",
+    links: [
+      { label: "Workplace Programs", href: "/workshops" },
+      { label: "Webinars", href: "/workshops" },
+      { label: "Trainings", href: "/workshops" },
+    ],
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    links: [
+      { label: "Enquiry Form", href: "/contact" },
+      { label: "Referral Network", href: "/referral-network" },
+    ],
+  },
+];
+
+const directLinks = [
+  { label: "Blog", href: "/blog" },
+  { label: "Testimonials", href: "/testimonials" },
+];
+
+const atGlanceItems = [
+  {
+    label: "Founder",
+    text: "Yashna Tulsiani",
+  },
+  {
+    label: "Experience",
+    text: "2000+ sessions facilitated",
+  },
+  {
+    label: "Format",
+    text: "Online therapy for adults",
+  },
+  {
+    label: "Available In",
+    text: "English, Hindi, Tamil, and Sindhi",
+  },
+  {
+    label: "Approach",
+    text: "Trauma-informed, relational, attachment-based, emotion-focused, and DBT-informed.",
+  },
+];
+
+const approachCards = [
+  {
+    title: "Reflective",
+    text: "We slow down enough to notice patterns, meanings, emotional responses, and the stories that have shaped your sense of self.",
+  },
+  {
+    title: "Relational",
+    text: "Therapy pays attention to attachment, boundaries, safety, closeness, conflict, and the ways relationships live inside us.",
+  },
+  {
+    title: "Trauma-informed",
+    text: "The work is paced with care, with attention to nervous-system capacity, emotional safety, and the protective wisdom of survival patterns.",
+  },
+  {
+    title: "Integrative",
+    text: "Sessions may draw from attachment-based, emotion-focused, narrative, and DBT-informed approaches depending on what is clinically useful.",
+  },
+];
+
+const bottomButtonClass =
+  "group inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] transition hover:bg-[#c58a5c] hover:border-[#c58a5c] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c58a5c]";
+
+function AtGlanceCard({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <aside
+      className={
+        mobile
+          ? "border border-[#d8d0c5]/80 bg-[#f7f3ed]/70 p-5 shadow-[0_24px_70px_rgba(79,95,75,0.055)] sm:p-7 lg:hidden"
+          : "hidden h-fit border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-8 lg:sticky lg:top-40 lg:mt-10 lg:block"
+      }
+    >
+      <p className="mb-6 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c] sm:mb-7">
+        At a glance
+      </p>
+
+      <div
+        className={
+          mobile
+            ? "grid gap-5 text-sm leading-7 text-[#4f5f4b]/80 sm:grid-cols-2"
+            : "space-y-7 text-sm leading-7 text-[#4f5f4b]/80"
+        }
+      >
+        {atGlanceItems.map((item) => (
+          <div key={item.label}>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+              {item.label}
+            </p>
+            <p className="mt-1">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+function BottomButton({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a href={href} className={bottomButtonClass}>
+      <span className="text-[#4f5f4b] transition group-hover:text-[#fff8ef]">
+        {children}
+      </span>
+    </a>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#f4f1ec] text-[#4f5f4b]">
       <nav className="site-nav">
         <div className="nav-inner">
-          <a href="/" className="nav-logo">
-            Solregn Therapy
+          <a href="/" className="nav-logo" aria-label="Solregn Therapy Home">
+            <img
+              src="/images/logo.png"
+              alt="Solregn Therapy"
+              className="nav-logo-image"
+            />
           </a>
 
-          <div className="nav-links">
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/resources">Resources</a>
-            <a href="/workshops">Workshops</a>
-            <a href="/contact">Contact</a>
-            <a href="/blog">Blog</a>
-            <a href="/testimonials">Testimonials</a>
+          <div className="nav-links desktop-nav-links">
+            {navGroups.map((group) => (
+              <div key={group.label} className="nav-item has-dropdown">
+                <div className="nav-trigger">
+                  <a href={group.href}>{group.label}</a>
+                  <span aria-hidden="true">⌄</span>
+                </div>
+
+                <div className="dropdown-menu">
+                  {group.links.map((link) => (
+                    <a key={link.label} href={link.href}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {directLinks.map((link) => (
+              <div key={link.label} className="nav-item">
+                <a href={link.href}>{link.label}</a>
+              </div>
+            ))}
           </div>
+
+          <details className="mobile-menu">
+            <summary>
+              <span>Menu</span>
+              <span aria-hidden="true">⌄</span>
+            </summary>
+
+            <div className="mobile-menu-panel">
+              {navGroups.map((group) => (
+                <details key={group.label} className="mobile-nav-group">
+                  <summary>
+                    <span>{group.label}</span>
+                    <span aria-hidden="true">⌄</span>
+                  </summary>
+
+                  <div className="mobile-sub-links">
+                    {group.links.map((link) => (
+                      <a key={link.label} href={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              ))}
+
+              {directLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="mobile-direct-link"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </details>
         </div>
       </nav>
 
-      <section className="px-6 pb-16 pt-32 sm:px-8 sm:pb-20 lg:px-12 lg:pb-28 lg:pt-40">
-        <div className="mx-auto max-w-6xl">
-          <div className="max-w-4xl">
-            <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
-              About Solregn Therapy
-            </p>
-
-            <h1
-              className="text-[clamp(2.6rem,10vw,6.8rem)] font-normal leading-[0.92] tracking-[0.045em] text-[#4f5f4b] sm:tracking-[0.055em]"
-              style={{ fontFamily: "var(--font-heading), serif" }}
-            >
-              Therapy here honours complexity rather than rushing resolution.
-            </h1>
-
-            <div className="mt-8 h-px w-20 bg-[#c58a5c]/75 sm:mt-9" />
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 sm:px-8 lg:px-12 lg:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          <aside className="h-fit border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.08)] sm:p-8 lg:sticky lg:top-32">
-            <div className="mb-7 aspect-[4/5] w-full overflow-hidden border border-[#d8d0c5]/80 bg-[#e7ded2]">
-              <img
-                src="/images/founder-yashna.png"
-                alt="Yashna Tulsiani, founder of Solregn Therapy"
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-              About the Founder
-            </p>
-
-            <h2
-              className="text-4xl font-normal leading-none tracking-[0.04em] text-[#4f5f4b]"
-              style={{ fontFamily: "var(--font-heading), serif" }}
-            >
-              Yashna Tulsiani
-            </h2>
-
-            <p className="mt-3 text-sm uppercase tracking-[0.18em] text-[#4f5f4b]/70">
-              Founder, Solregn Therapy
-            </p>
-
-            <div className="my-7 h-px w-full bg-[#d8d0c5]/90" />
-
-            <div className="space-y-5 text-sm leading-7 text-[#4f5f4b]/80">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
-                  Experience
-                </p>
-                <p className="mt-1">2000+ sessions facilitated</p>
-              </div>
-
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
-                  Format
-                </p>
-                <p className="mt-1">Online therapy for adults</p>
-              </div>
-
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
-                  Available In
-                </p>
-                <p className="mt-1">English, Hindi, Tamil, and Sindhi</p>
-              </div>
-            </div>
-          </aside>
+      <section className="px-6 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <AtGlanceCard />
 
           <div className="space-y-14 sm:space-y-16">
-            <section>
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-                Founder
+            <section className="border-b border-[#d8d0c5]/80 pb-12 sm:pb-14">
+              <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
+                About Solregn Therapy
               </p>
 
-              <div className="space-y-6 text-[1.02rem] leading-8 text-[#4f5f4b]/85 sm:text-lg sm:leading-9">
+              <p
+                className="mb-8 max-w-3xl text-[1.25rem] italic leading-8 tracking-[0.02em] text-[#4f5f4b]/75 sm:mb-9 sm:text-[1.65rem] sm:leading-10"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                A reflective space for complexity, clarity, and emotional
+                steadiness.
+              </p>
+
+              <div className="mb-7 flex flex-col gap-3 border-l border-[#c58a5c]/60 pl-5 sm:flex-row sm:items-end sm:gap-5">
+                <h1
+                  className="text-[clamp(2.3rem,6vw,4.4rem)] font-normal leading-none tracking-[0.07em] text-[#4f5f4b]"
+                  style={{ fontFamily: "var(--font-heading), serif" }}
+                >
+                  Solregn
+                </h1>
+
+                <p className="pb-1 text-base italic tracking-[0.05em] text-[#4f5f4b]/70">
+                  /suːlˈrɛɪn/
+                </p>
+              </div>
+
+              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
+                <p>
+                  Solregn is a Norwegian word for sun-shower, the quiet meeting
+                  of sunlight and rain. It describes a moment where two
+                  seemingly opposite things exist together: warmth and
+                  difficulty, clarity and uncertainty, tenderness and heaviness.
+                </p>
+
+                <p>
+                  For us, this image holds the essence of therapy. Healing does
+                  not always arrive as a sudden breakthrough or a complete
+                  absence of pain. Sometimes, it begins in the space where light
+                  slowly enters what once felt overwhelming.
+                </p>
+
+                <p>
+                  Solregn Therapy was created as a reflective, nurturing space
+                  for people who are trying to make sense of themselves, their
+                  emotions, their relationships, and the patterns they keep
+                  returning to.
+                </p>
+
+                <p>
+                  It is built on the belief that growth often happens through
+                  complexity, not by rushing past it. Here, we hold space for the
+                  parts of you that feel confused, tired, anxious, grieving,
+                  guarded, hopeful, or still becoming.
+                </p>
+              </div>
+            </section>
+
+            <AtGlanceCard mobile />
+
+            <section>
+              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                About the Founder
+              </p>
+
+              <h2
+                className="mb-7 text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em] text-[#4f5f4b]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                Yashna Tulsiani
+              </h2>
+
+              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
                 <p>
                   Hi, I’m Yashna. I facilitate online therapy for adults,
                   working across anxiety, trauma including relational and
@@ -133,55 +332,33 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="border-y border-[#d8d0c5]/80 py-12 sm:py-14">
+            <section className="border-y border-[#d8d0c5]/80 py-10 sm:py-14">
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-                About Solregn
+                Therapeutic Approach
               </p>
 
-              <div className="mb-8">
-                <h2
-                  className="text-[clamp(3rem,12vw,6rem)] font-normal leading-none tracking-[0.08em] text-[#4f5f4b]"
-                  style={{ fontFamily: "var(--font-heading), serif" }}
-                >
-                  Solregn
-                </h2>
-                <p className="mt-3 text-lg italic tracking-[0.05em] text-[#4f5f4b]/70">
-                  /suːlˈrɛɪn/
-                </p>
-              </div>
+              <h2
+                className="mb-8 text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em] text-[#4f5f4b]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                Therapy here honours complexity rather than rushing resolution.
+              </h2>
 
-              <div className="space-y-6 text-[1.02rem] leading-8 text-[#4f5f4b]/85 sm:text-lg sm:leading-9">
-                <p>
-                  Solregn /suːlˈrɛɪn/ is a Norwegian word for sun-shower, the
-                  quiet meeting of sunlight and rain. It describes a moment
-                  where two seemingly opposite things exist together: warmth and
-                  difficulty, clarity and uncertainty, tenderness and heaviness.
-                  For us, this image holds the essence of therapy. Healing does
-                  not always arrive as a sudden breakthrough or a complete
-                  absence of pain. Sometimes, it begins in the space where light
-                  slowly enters what once felt overwhelming.
-                </p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {approachCards.map((card) => (
+                  <div
+                    key={card.title}
+                    className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6"
+                  >
+                    <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+                      {card.title}
+                    </p>
 
-                <p>
-                  Solregn Therapy was created as a reflective, nurturing space
-                  for people who are trying to make sense of themselves, their
-                  emotions, their relationships, and the patterns they keep
-                  returning to. It is built on the belief that growth often
-                  happens through complexity, not by rushing past it. Here, we
-                  hold space for the parts of you that feel confused, tired,
-                  anxious, grieving, guarded, hopeful, or still becoming.
-                </p>
-
-                <p>
-                  At Solregn Therapy, our aim is to help you feel more connected
-                  to your inner world with safety, depth, and compassion. We
-                  support you in understanding your experiences, building
-                  emotional capacity, softening survival patterns, and finding
-                  steadier ways of being with yourself and others. Like a
-                  sun-shower, this work honours both the rain and the light,
-                  making room for resilience, renewal, and meaning to emerge at
-                  your own pace.
-                </p>
+                    <p className="text-sm leading-7 text-[#4f5f4b]/78">
+                      {card.text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </section>
 
@@ -190,14 +367,7 @@ export default function AboutPage() {
                 This Space May Support You With
               </p>
 
-              <h2
-                className="mb-8 max-w-3xl text-[clamp(2.2rem,9vw,4.4rem)] font-normal leading-[0.98] tracking-[0.04em]"
-                style={{ fontFamily: "var(--font-heading), serif" }}
-              >
-                Insight, steadiness, and emotional capacity.
-              </h2>
-
-              <div className="space-y-6 text-[1.02rem] leading-8 text-[#4f5f4b]/85 sm:text-lg sm:leading-9">
+              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
                 <p>
                   Solregn Therapy may be a good fit if you are navigating
                   emotional overwhelm, anxiety, overthinking, trauma, burnout,
@@ -226,13 +396,13 @@ export default function AboutPage() {
               </p>
 
               <h2
-                className="max-w-3xl text-[clamp(2.25rem,9vw,4.8rem)] font-normal leading-[0.98] tracking-[0.04em]"
+                className="max-w-3xl text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 Therapy can begin exactly where you are.
               </h2>
 
-              <div className="mt-8 space-y-5 text-[1.02rem] leading-8 text-[#4f5f4b]/85 sm:text-lg sm:leading-9">
+              <div className="mt-7 space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
                 <p>
                   Starting therapy can feel vulnerable. You do not need to have
                   everything figured out before you begin.
@@ -244,20 +414,12 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-[#4f5f4b] transition hover:bg-[#c58a5c] hover:text-[#f4f1ec]"
-                >
-                  Reach out to begin
-                </a>
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <BottomButton href="/services">Reach out to begin</BottomButton>
 
-                <a
-                  href="/services"
-                  className="inline-flex items-center justify-center border border-[#d8d0c5] px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-[#4f5f4b]/80 transition hover:border-[#c58a5c] hover:text-[#c58a5c]"
-                >
-                  View services
-                </a>
+                <BottomButton href="/contact">Contact</BottomButton>
+
+                <BottomButton href="/faqs">FAQs</BottomButton>
               </div>
             </section>
           </div>
