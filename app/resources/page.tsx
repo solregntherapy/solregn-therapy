@@ -1,206 +1,667 @@
-type ResourceItem = {
-  title: string;
-  description: string;
-  href: string;
-  label: string;
-};
-
-type ResourceSection = {
-  number: string;
-  title: string;
-  description: string;
-  resources: ResourceItem[];
-};
-
-const resourceSections: ResourceSection[] = [
+const navGroups = [
   {
-    number: "01",
-    title: "Emotional Regulation",
-    description:
-      "Tools and reflections for understanding emotions, grounding the body, building steadiness, and responding to overwhelm with more care.",
-    resources: [
-      // Later, add resources like this:
-      // {
-      //   title: "Grounding Practice Sheet",
-      //   description: "A simple worksheet for returning to the present moment.",
-      //   href: "/resources/grounding-practice-sheet.pdf",
-      //   label: "PDF",
-      // },
+    label: "About",
+    href: "/about",
+    links: [
+      { label: "About Solregn", href: "/about" },
+      { label: "About Founder", href: "/about" },
     ],
   },
   {
-    number: "02",
-    title: "Anxiety & Overthinking",
-    description:
-      "Resources for working with worry, spiralling thoughts, uncertainty, body anxiety, and the need to mentally solve everything at once.",
-    resources: [],
+    label: "Services",
+    href: "/services",
+    links: [
+      { label: "Individual Therapy", href: "/services#individual-therapy" },
+      { label: "Couples Therapy", href: "/services#couples-therapy" },
+      { label: "Supervision", href: "/services#supervision" },
+      { label: "Workshops", href: "/services#workshops" },
+    ],
   },
   {
-    number: "03",
-    title: "Trauma & Nervous-System Awareness",
-    description:
-      "Gentle resources for understanding survival responses, emotional triggers, shutdown, hypervigilance, and the body’s protective patterns.",
-    resources: [],
+    label: "Resources",
+    href: "/resources",
+    links: [
+      { label: "Emotional Regulation", href: "/resources" },
+      { label: "Anxiety & Overthinking", href: "/resources" },
+      { label: "Crisis Support", href: "/resources" },
+    ],
   },
   {
-    number: "04",
-    title: "Relationships & Attachment",
-    description:
-      "Reflections for exploring relational patterns, needs, boundaries, repair, conflict, closeness, distance, and attachment wounds.",
-    resources: [],
+    label: "Workshops",
+    href: "/workshops",
+    links: [
+      { label: "Workplace Programs", href: "/workshops" },
+      { label: "Webinars", href: "/workshops" },
+      { label: "Trainings", href: "/workshops" },
+    ],
   },
   {
-    number: "05",
-    title: "Therapy Reflections",
-    description:
-      "Journaling prompts, self-reflection questions, and therapy between-session practices to help deepen the work outside sessions.",
-    resources: [],
-  },
-  {
-    number: "06",
-    title: "Crisis & Additional Support",
-    description:
-      "A space for crisis resources, helplines, safety planning tools, and guidance for moments that need more immediate support.",
-    resources: [],
+    label: "Contact",
+    href: "/contact",
+    links: [
+      { label: "Enquiry Form", href: "/contact" },
+      { label: "Referral Network", href: "/referral-network" },
+    ],
   },
 ];
+
+const directLinks = [
+  { label: "Blog", href: "/blog" },
+  { label: "Testimonials", href: "/testimonials" },
+];
+
+const resourceTabs = {
+  crisis:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=0#gid=0",
+  emotionalRegulation:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=947334288#gid=947334288",
+  anxietyOverthinking:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=1936214576#gid=1936214576",
+  groundingTools:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=1209145903#gid=1209145903",
+  journalingPrompts:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=565672434#gid=565672434",
+  therapyBetweenSessions:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=770788571#gid=770788571",
+  relationshipsBoundaries:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=545366939#gid=545366939",
+  griefLoss:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=739983068#gid=739983068",
+  selfWorthShame:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=813694042#gid=813694042",
+  burnoutWorkStress:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=910334263#gid=910334263",
+  booksPodcastsArticles:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=1629863186#gid=1629863186",
+  clientsStartingTherapy:
+    "https://docs.google.com/spreadsheets/d/1VnDkHCOmbcH1VGJFCKDmVYXRtxGIkLmR199dc9T7YIM/edit?gid=775448657#gid=775448657",
+};
+
+const pageLinks = [
+  { label: "Start here", href: "#start-here" },
+  { label: "Crisis support", href: "#crisis-support" },
+  { label: "Emotional regulation", href: "#emotional-regulation" },
+  { label: "Anxiety & overthinking", href: "#anxiety-overthinking" },
+  { label: "Grounding tools", href: "#grounding-tools" },
+  { label: "More resources", href: "#more-resources" },
+];
+
+const additionalResources = [
+  {
+    title: "Journaling Prompts",
+    description:
+      "Reflective prompts for naming feelings, noticing patterns, and making space for what is difficult to say out loud.",
+    href: resourceTabs.journalingPrompts,
+  },
+  {
+    title: "Therapy Between Sessions",
+    description:
+      "Gentle practices and reminders for staying connected to the work outside the therapy hour.",
+    href: resourceTabs.therapyBetweenSessions,
+  },
+  {
+    title: "Relationships & Boundaries",
+    description:
+      "Resources for communication, emotional needs, relational patterns, and boundary-setting.",
+    href: resourceTabs.relationshipsBoundaries,
+  },
+  {
+    title: "Grief & Loss",
+    description:
+      "Supportive material for loss, transition, longing, endings, and continuing bonds.",
+    href: resourceTabs.griefLoss,
+  },
+  {
+    title: "Self-Worth & Shame",
+    description:
+      "Resources for inner criticism, shame, self-trust, enoughness, and compassionate self-reflection.",
+    href: resourceTabs.selfWorthShame,
+  },
+  {
+    title: "Burnout & Work Stress",
+    description:
+      "Resources for exhaustion, overwhelm, workplace stress, capacity, and recovery.",
+    href: resourceTabs.burnoutWorkStress,
+  },
+  {
+    title: "Books, Podcasts & Articles",
+    description:
+      "Curated reading and listening recommendations for deeper reflection and psychoeducation.",
+    href: resourceTabs.booksPodcastsArticles,
+  },
+  {
+    title: "For Clients Starting Therapy",
+    description:
+      "A soft starting point for what to expect, how to prepare, and how to begin therapy thoughtfully.",
+    href: resourceTabs.clientsStartingTherapy,
+  },
+];
+
+const bottomButtonClass =
+  "group inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] transition hover:bg-[#c58a5c] hover:border-[#c58a5c] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c58a5c]";
+
+function SiteNavigation() {
+  return (
+    <nav className="site-nav">
+      <div className="nav-inner">
+        <a href="/" className="nav-logo" aria-label="Solregn Therapy Home">
+          <img
+            src="/images/logo.png"
+            alt="Solregn Therapy"
+            className="nav-logo-image"
+          />
+        </a>
+
+        <div className="nav-links desktop-nav-links">
+          {navGroups.map((group) => (
+            <div key={group.label} className="nav-item has-dropdown">
+              <div className="nav-trigger">
+                <a href={group.href}>{group.label}</a>
+                <span aria-hidden="true">⌄</span>
+              </div>
+
+              <div className="dropdown-menu">
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {directLinks.map((link) => (
+            <div key={link.label} className="nav-item">
+              <a href={link.href}>{link.label}</a>
+            </div>
+          ))}
+        </div>
+
+        <details className="mobile-menu">
+          <summary>
+            <span>Menu</span>
+            <span aria-hidden="true">⌄</span>
+          </summary>
+
+          <div className="mobile-menu-panel">
+            {navGroups.map((group) => (
+              <details key={group.label} className="mobile-nav-group">
+                <summary>
+                  <span>{group.label}</span>
+                  <span aria-hidden="true">⌄</span>
+                </summary>
+
+                <div className="mobile-sub-links">
+                  {group.links.map((link) => (
+                    <a key={link.label} href={link.href}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ))}
+
+            {directLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="mobile-direct-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </details>
+      </div>
+    </nav>
+  );
+}
+
+function BottomButton({
+  href,
+  children,
+  external = false,
+}: {
+  href: string;
+  children: string;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      className={bottomButtonClass}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+    >
+      <span className="text-[#4f5f4b] transition group-hover:text-[#fff8ef]">
+        {children}
+      </span>
+    </a>
+  );
+}
+
+function DesktopSidebar() {
+  return (
+    <aside className="hidden h-fit max-h-[calc(100vh-9rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2 lg:self-start">
+      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+        On this page
+      </p>
+
+      <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+        {pageLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="block border border-[#d8d0c5]/70 bg-[#f4f1ec]/60 px-4 py-3 transition hover:border-[#c58a5c]/70 hover:text-[#4f5f4b]"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-8 border-t border-[#d8d0c5]/80 pt-6">
+        <p className="text-[0.78rem] leading-6 text-[#4f5f4b]/72">
+          These resources are for reflection, grounding, and gentle
+          psychoeducation. They do not replace therapy, diagnosis, or emergency
+          care.
+        </p>
+      </div>
+    </aside>
+  );
+}
+
+function MobileSidebar() {
+  return (
+    <aside className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/70 p-5 shadow-[0_24px_70px_rgba(79,95,75,0.055)] sm:p-7 lg:hidden">
+      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+        On this page
+      </p>
+
+      <div className="grid gap-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80 sm:grid-cols-2">
+        {pageLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="border border-[#d8d0c5]/70 bg-[#f4f1ec]/60 px-4 py-3 transition hover:border-[#c58a5c]/70 hover:text-[#4f5f4b]"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </aside>
+  );
+}
 
 export default function ResourcesPage() {
   return (
     <main className="min-h-screen bg-[#f4f1ec] text-[#4f5f4b]">
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <a href="/" className="nav-logo">
-            Solregn Therapy
-          </a>
+      <SiteNavigation />
 
-          <div className="nav-links">
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/resources">Resources</a>
-            <a href="/workshops">Workshops</a>
-            <a href="/contact">Contact</a>
-            <a href="/blog">Blog</a>
-            <a href="/testimonials">Testimonials</a>
-          </div>
-        </div>
-      </nav>
+      <section className="px-6 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <DesktopSidebar />
 
-      <section className="px-6 pb-16 pt-32 sm:px-8 sm:pb-20 lg:px-12 lg:pb-28 lg:pt-40">
-        <div className="mx-auto max-w-6xl">
-          <div className="max-w-4xl">
-            <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
-              Resources
-            </p>
+          <div className="min-w-0 space-y-12">
+            <header>
+              <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
+                Resources
+              </p>
 
-            <h1
-              className="text-[clamp(2.8rem,10vw,6.8rem)] font-normal leading-[0.92] tracking-[0.045em] text-[#4f5f4b] sm:tracking-[0.055em]"
-              style={{ fontFamily: "var(--font-heading), serif" }}
-            >
-              Gentle tools for reflection, steadiness, and support.
-            </h1>
-
-            <div className="mt-8 h-px w-20 bg-[#c58a5c]/75 sm:mt-9" />
-
-            <p className="mt-8 max-w-3xl text-[1.02rem] leading-8 text-[#4f5f4b]/80 sm:text-lg sm:leading-9">
-              This space will hold therapy-informed resources, reflection
-              prompts, worksheets, grounding practices, and supportive tools
-              that can be returned to between sessions or whenever you need a
-              quiet place to begin.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 sm:px-8 lg:px-12 lg:pb-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-6 md:grid-cols-2">
-            {resourceSections.map((section) => (
-              <article
-                key={section.number}
-                className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_24px_70px_rgba(79,95,75,0.05)] sm:p-8"
+              <h1
+                className="mb-7 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.08] tracking-[0.03em] text-[#4f5f4b]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
               >
-                <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-                  {section.number}
+                Gentle tools for emotional regulation, anxiety, grounding, and
+                moments that need steady support.
+              </h1>
+
+              <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                <p>
+                  This page brings together simple reflective resources that may
+                  support you between sessions, before beginning therapy, or
+                  while making sense of what you are experiencing.
+                </p>
+
+                <p>
+                  The intention is not to fix everything quickly. It is to offer
+                  a few steady practices and carefully organised resources that
+                  help you pause, orient, and return to yourself with a little
+                  more clarity.
+                </p>
+              </div>
+            </header>
+
+            <MobileSidebar />
+
+            <section
+              id="start-here"
+              className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
+            >
+              <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                Start here
+              </p>
+
+              <h2
+                className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                How to use this page
+              </h2>
+
+              <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                <p>
+                  You do not need to read everything in order. Choose the
+                  section that feels closest to what you are noticing today:
+                  needing immediate support, emotional overwhelm, anxiety,
+                  racing thoughts, shutdown, or disconnection.
+                </p>
+
+                <p>
+                  Move slowly. Even one small practice done with attention can
+                  be more useful than trying to do many things at once.
+                </p>
+              </div>
+            </section>
+
+            <section
+              id="crisis-support"
+              className="bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10"
+            >
+              <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                Crisis support
+              </p>
+
+              <h2
+                className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                When support needs to be immediate.
+              </h2>
+
+              <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                <p>
+                  Solregn Therapy is not an emergency or crisis response
+                  service. Email enquiries are not monitored for urgent
+                  support.
+                </p>
+
+                <p>
+                  If there is immediate danger or you feel unable to stay safe,
+                  please contact local emergency services, go to the nearest
+                  hospital emergency department, or reach out to a trusted person
+                  near you right away.
+                </p>
+
+                <p>
+                  The crisis support library includes helplines, emergency
+                  support options, and real-time resources that may be useful
+                  when waiting for a therapy response is not appropriate.
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <BottomButton href={resourceTabs.crisis} external>
+                  View urgent support resources
+                </BottomButton>
+              </div>
+            </section>
+
+            <section id="emotional-regulation" className="space-y-7">
+              <div>
+                <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                  Emotional regulation
                 </p>
 
                 <h2
-                  className="text-[clamp(2.2rem,6vw,3.8rem)] font-normal leading-[0.98] tracking-[0.04em]"
+                  className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
                   style={{ fontFamily: "var(--font-heading), serif" }}
                 >
-                  {section.title}
+                  When emotions feel too much, too fast, or difficult to name.
                 </h2>
+              </div>
 
-                <p className="mt-6 text-[1rem] leading-8 text-[#4f5f4b]/80 sm:text-lg sm:leading-9">
-                  {section.description}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <article className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7">
+                  <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                    Notice
+                  </p>
+
+                  <h3
+                    className="mb-4 text-[1.12rem] font-normal leading-snug tracking-[0.035em]"
+                    style={{ fontFamily: "var(--font-heading), serif" }}
+                  >
+                    Name what is here
+                  </h3>
+
+                  <p className="text-[0.9rem] leading-7 text-[#4f5f4b]/80">
+                    Try naming the emotion gently: “Something in me feels
+                    anxious,” “Something in me feels hurt,” or “Something in me
+                    feels overwhelmed.” This creates a little space between you
+                    and the feeling.
+                  </p>
+                </article>
+
+                <article className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7">
+                  <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                    Soften
+                  </p>
+
+                  <h3
+                    className="mb-4 text-[1.12rem] font-normal leading-snug tracking-[0.035em]"
+                    style={{ fontFamily: "var(--font-heading), serif" }}
+                  >
+                    Lower the demand
+                  </h3>
+
+                  <p className="text-[0.9rem] leading-7 text-[#4f5f4b]/80">
+                    Instead of asking yourself to be calm immediately, ask,
+                    “What would make this 5% easier to hold right now?” Small
+                    shifts often feel more accessible than complete emotional
+                    change.
+                  </p>
+                </article>
+              </div>
+
+              <div>
+                <BottomButton href={resourceTabs.emotionalRegulation} external>
+                  View emotional regulation resources
+                </BottomButton>
+              </div>
+            </section>
+
+            <section
+              id="anxiety-overthinking"
+              className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
+            >
+              <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                Anxiety & overthinking
+              </p>
+
+              <h2
+                className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                When the mind keeps searching for certainty.
+              </h2>
+
+              <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                <p>
+                  Anxiety often tries to protect us by thinking ahead, scanning
+                  for problems, and preparing for every possible outcome. This
+                  can be exhausting when the mind cannot find a clear stopping
+                  point.
                 </p>
 
-                <div className="mt-8 border-t border-[#d8d0c5]/80 pt-6">
-                  {section.resources.length > 0 ? (
-                    <div className="space-y-4">
-                      {section.resources.map((resource) => (
-                        <a
-                          key={resource.title}
-                          href={resource.href}
-                          className="block border border-[#d8d0c5]/80 bg-[#f4f1ec]/70 p-4 transition hover:border-[#c58a5c]"
-                        >
-                          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                            <div>
-                              <h3 className="text-base font-medium text-[#4f5f4b]">
-                                {resource.title}
-                              </h3>
+                <p>
+                  The anxiety and overthinking library includes resources for
+                  worry loops, rumination, uncertainty, anxious spirals, and
+                  small ways to return to the present.
+                </p>
+              </div>
 
-                              <p className="mt-2 text-sm leading-7 text-[#4f5f4b]/70">
-                                {resource.description}
-                              </p>
-                            </div>
-
-                            <span className="text-xs font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
-                              {resource.label}
-                            </span>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-sm leading-7 text-[#4f5f4b]/60">
-                      Resources will be added here soon.
-                    </p>
-                  )}
+              <div className="mt-8 grid gap-5 sm:grid-cols-3">
+                <div className="border border-[#d8d0c5]/80 bg-[#f4f1ec]/50 p-5">
+                  <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+                    Step 01
+                  </p>
+                  <p className="text-[0.88rem] leading-7 text-[#4f5f4b]/80">
+                    Write down the exact worry in one sentence.
+                  </p>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="px-6 pb-24 sm:px-8 lg:px-12 lg:pb-32">
-        <div className="mx-auto max-w-6xl bg-[#e7ded2]/55 px-6 py-10 text-center sm:px-10 sm:py-12">
-          <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-            A Note
-          </p>
+                <div className="border border-[#d8d0c5]/80 bg-[#f4f1ec]/50 p-5">
+                  <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+                    Step 02
+                  </p>
+                  <p className="text-[0.88rem] leading-7 text-[#4f5f4b]/80">
+                    Separate what is in your control from what is uncertain.
+                  </p>
+                </div>
 
-          <h2
-            className="mx-auto max-w-4xl text-[clamp(2.25rem,8vw,4.8rem)] font-normal leading-[0.98] tracking-[0.04em]"
-            style={{ fontFamily: "var(--font-heading), serif" }}
-          >
-            Resources can support the work, but they do not have to replace
-            care.
-          </h2>
+                <div className="border border-[#d8d0c5]/80 bg-[#f4f1ec]/50 p-5">
+                  <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+                    Step 03
+                  </p>
+                  <p className="text-[0.88rem] leading-7 text-[#4f5f4b]/80">
+                    Choose one grounded action, or pause the thought loop.
+                  </p>
+                </div>
+              </div>
 
-          <p className="mx-auto mt-8 max-w-3xl text-[1.02rem] leading-8 text-[#4f5f4b]/80 sm:text-lg sm:leading-9">
-            These resources are intended for reflection, grounding, and
-            psychoeducation. They are not a substitute for therapy, crisis
-            support, medical care, or emergency services.
-          </p>
+              <div className="mt-8">
+                <BottomButton href={resourceTabs.anxietyOverthinking} external>
+                  View anxiety resources
+                </BottomButton>
+              </div>
+            </section>
 
-          <div className="mt-9">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-[#4f5f4b] transition hover:bg-[#c58a5c] hover:text-[#f4f1ec]"
-            >
-              Contact Solregn
-            </a>
+            <section id="grounding-tools" className="space-y-7">
+              <div>
+                <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                  Grounding tools
+                </p>
+
+                <h2
+                  className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                  style={{ fontFamily: "var(--font-heading), serif" }}
+                >
+                  Small practices for returning to the present.
+                </h2>
+              </div>
+
+              <div className="space-y-5">
+                <article className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7">
+                  <h3
+                    className="mb-4 text-[1.12rem] font-normal leading-snug tracking-[0.035em]"
+                    style={{ fontFamily: "var(--font-heading), serif" }}
+                  >
+                    The room scan
+                  </h3>
+
+                  <p className="text-[0.9rem] leading-7 text-[#4f5f4b]/80">
+                    Slowly look around the room and name five neutral objects
+                    you can see. Let your eyes move at a pace that feels
+                    comfortable. This helps orient the mind and body to the
+                    present environment.
+                  </p>
+                </article>
+
+                <article className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7">
+                  <h3
+                    className="mb-4 text-[1.12rem] font-normal leading-snug tracking-[0.035em]"
+                    style={{ fontFamily: "var(--font-heading), serif" }}
+                  >
+                    The support check
+                  </h3>
+
+                  <p className="text-[0.9rem] leading-7 text-[#4f5f4b]/80">
+                    Notice where your body is being supported: feet on the
+                    floor, back against a chair, hands resting somewhere. Let
+                    yourself receive that support for a few breaths.
+                  </p>
+                </article>
+              </div>
+
+              <div>
+                <BottomButton href={resourceTabs.groundingTools} external>
+                  View grounding resources
+                </BottomButton>
+              </div>
+            </section>
+
+            <section id="more-resources" className="space-y-7">
+              <div>
+                <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                  More resources
+                </p>
+
+                <h2
+                  className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                  style={{ fontFamily: "var(--font-heading), serif" }}
+                >
+                  Additional areas in the Solregn resource library.
+                </h2>
+
+                <p className="mt-6 max-w-3xl text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                  These sections are part of the growing resource library and
+                  may be expanded over time with worksheets, reflections, links,
+                  and recommendations.
+                </p>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                {additionalResources.map((resource) => (
+                  <article
+                    key={resource.title}
+                    className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
+                  >
+                    <h3
+                      className="mb-4 text-[1.12rem] font-normal leading-snug tracking-[0.035em]"
+                      style={{ fontFamily: "var(--font-heading), serif" }}
+                    >
+                      {resource.title}
+                    </h3>
+
+                    <p className="mb-6 text-[0.9rem] leading-7 text-[#4f5f4b]/80">
+                      {resource.description}
+                    </p>
+
+                    <BottomButton href={resource.href} external>
+                      Open resources
+                    </BottomButton>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="border-t border-[#d8d0c5]/80 pt-9">
+              <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                Begin gently
+              </p>
+
+              <h2
+                className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                Looking for support beyond self-guided resources?
+              </h2>
+
+              <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                <p>
+                  If you are considering therapy, you can write in with a brief
+                  note about what you are looking for. The next step can be slow,
+                  thoughtful, and clear.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <BottomButton href="mailto:solregntherapy@gmail.com">
+                  Write to Solregn
+                </BottomButton>
+
+                <BottomButton href="/services">View services</BottomButton>
+              </div>
+            </section>
           </div>
         </div>
       </section>
