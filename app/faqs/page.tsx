@@ -457,7 +457,7 @@ export default function FAQsPage() {
                     >
                       <summary className="flex cursor-pointer list-none items-start justify-between gap-5 [&::-webkit-details-marker]:hidden">
                         <h3
-                          className="max-w-3xl text-[0.95rem] font-semibold leading-6 tracking-[0.01em] text-[#4f5f4b] sm:text-[1rem] sm:leading-7"
+                          className="max-w-3xl text-[1.03rem] font-normal leading-7 tracking-[0.01em] text-[#4f5f4b] sm:text-[1.08rem]"
                           style={{ fontFamily: "var(--font-heading), serif" }}
                         >
                           {item.question}
