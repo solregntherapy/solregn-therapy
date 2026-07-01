@@ -94,31 +94,119 @@ const approachCards = [
 const bottomButtonClass =
   "group inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] transition hover:bg-[#c58a5c] hover:border-[#c58a5c] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c58a5c]";
 
-function AtGlanceCard({ mobile = false }: { mobile?: boolean }) {
+function SiteNavigation() {
   return (
-    <aside
-      className={
-        mobile
-          ? "border border-[#d8d0c5]/80 bg-[#f7f3ed]/70 p-5 shadow-[0_24px_70px_rgba(79,95,75,0.055)] sm:p-7 lg:hidden"
-          : "hidden h-fit border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-8 lg:sticky lg:top-40 lg:mt-10 lg:block"
-      }
-    >
-      <p className="mb-6 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c] sm:mb-7">
+    <nav className="site-nav">
+      <div className="nav-inner">
+        <a href="/" className="nav-logo" aria-label="Solregn Therapy Home">
+          <img
+            src="/images/logo.png"
+            alt="Solregn Therapy"
+            className="nav-logo-image"
+          />
+        </a>
+
+        <div className="nav-links desktop-nav-links">
+          {navGroups.map((group) => (
+            <div key={group.label} className="nav-item has-dropdown">
+              <div className="nav-trigger">
+                <a href={group.href}>{group.label}</a>
+                <span aria-hidden="true">⌄</span>
+              </div>
+
+              <div className="dropdown-menu">
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {directLinks.map((link) => (
+            <div key={link.label} className="nav-item">
+              <a href={link.href}>{link.label}</a>
+            </div>
+          ))}
+        </div>
+
+        <details className="mobile-menu">
+          <summary>
+            <span>Menu</span>
+            <span aria-hidden="true">⌄</span>
+          </summary>
+
+          <div className="mobile-menu-panel">
+            {navGroups.map((group) => (
+              <details key={group.label} className="mobile-nav-group">
+                <summary>
+                  <span>{group.label}</span>
+                  <span aria-hidden="true">⌄</span>
+                </summary>
+
+                <div className="mobile-sub-links">
+                  {group.links.map((link) => (
+                    <a key={link.label} href={link.href}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ))}
+
+            {directLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="mobile-direct-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </details>
+      </div>
+    </nav>
+  );
+}
+
+function AtGlanceCard({ mobile = false }: { mobile?: boolean }) {
+  if (mobile) {
+    return (
+      <aside className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/70 p-5 shadow-[0_24px_70px_rgba(79,95,75,0.055)] sm:p-7 lg:hidden">
+        <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          At a glance
+        </p>
+
+        <div className="grid gap-5 text-[0.82rem] leading-6 text-[#4f5f4b]/80 sm:grid-cols-2">
+          {atGlanceItems.map((item) => (
+            <div key={item.label}>
+              <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
+                {item.label}
+              </p>
+
+              <p className="mt-1">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="hidden h-fit max-h-[calc(100vh-8rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-28 lg:mt-8 lg:block">
+      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
         At a glance
       </p>
 
-      <div
-        className={
-          mobile
-            ? "grid gap-5 text-sm leading-7 text-[#4f5f4b]/80 sm:grid-cols-2"
-            : "space-y-7 text-sm leading-7 text-[#4f5f4b]/80"
-        }
-      >
+      <div className="space-y-5 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
         {atGlanceItems.map((item) => (
-          <div key={item.label}>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+          <div key={item.label} className="border-b border-[#d8d0c5]/80 pb-4">
+            <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
               {item.label}
             </p>
+
             <p className="mt-1">{item.text}</p>
           </div>
         ))}
@@ -132,7 +220,7 @@ function BottomButton({
   children,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: string;
 }) {
   return (
     <a href={href} className={bottomButtonClass}>
@@ -146,111 +234,38 @@ function BottomButton({
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#f4f1ec] text-[#4f5f4b]">
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <a href="/" className="nav-logo" aria-label="Solregn Therapy Home">
-            <img
-              src="/images/logo.png"
-              alt="Solregn Therapy"
-              className="nav-logo-image"
-            />
-          </a>
-
-          <div className="nav-links desktop-nav-links">
-            {navGroups.map((group) => (
-              <div key={group.label} className="nav-item has-dropdown">
-                <div className="nav-trigger">
-                  <a href={group.href}>{group.label}</a>
-                  <span aria-hidden="true">⌄</span>
-                </div>
-
-                <div className="dropdown-menu">
-                  {group.links.map((link) => (
-                    <a key={link.label} href={link.href}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {directLinks.map((link) => (
-              <div key={link.label} className="nav-item">
-                <a href={link.href}>{link.label}</a>
-              </div>
-            ))}
-          </div>
-
-          <details className="mobile-menu">
-            <summary>
-              <span>Menu</span>
-              <span aria-hidden="true">⌄</span>
-            </summary>
-
-            <div className="mobile-menu-panel">
-              {navGroups.map((group) => (
-                <details key={group.label} className="mobile-nav-group">
-                  <summary>
-                    <span>{group.label}</span>
-                    <span aria-hidden="true">⌄</span>
-                  </summary>
-
-                  <div className="mobile-sub-links">
-                    {group.links.map((link) => (
-                      <a key={link.label} href={link.href}>
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </details>
-              ))}
-
-              {directLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="mobile-direct-link"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </details>
-        </div>
-      </nav>
+      <SiteNavigation />
 
       <section className="px-6 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <AtGlanceCard />
 
-          <div className="space-y-14 sm:space-y-16">
-            <section className="border-b border-[#d8d0c5]/80 pb-12 sm:pb-14">
+          <div className="space-y-12 sm:space-y-14">
+            <section className="border-b border-[#d8d0c5]/80 pb-10 sm:pb-12">
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
                 About Solregn Therapy
               </p>
 
+              <h1
+                className="mb-4 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.08] tracking-[0.03em] text-[#4f5f4b]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                Solregn
+              </h1>
+
+              <p className="mb-6 text-[0.92rem] italic tracking-[0.05em] text-[#4f5f4b]/70 sm:text-[0.96rem]">
+                /suːlˈrɛɪn/
+              </p>
+
               <p
-                className="mb-8 max-w-3xl text-[1.25rem] italic leading-8 tracking-[0.02em] text-[#4f5f4b]/75 sm:mb-9 sm:text-[1.65rem] sm:leading-10"
+                className="mb-7 max-w-3xl text-[1.05rem] italic leading-7 tracking-[0.02em] text-[#4f5f4b]/75 sm:text-[1.15rem] sm:leading-8"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 A reflective space for complexity, clarity, and emotional
                 steadiness.
               </p>
 
-              <div className="mb-7 flex flex-col gap-3 border-l border-[#c58a5c]/60 pl-5 sm:flex-row sm:items-end sm:gap-5">
-                <h1
-                  className="text-[clamp(2.3rem,6vw,4.4rem)] font-normal leading-none tracking-[0.07em] text-[#4f5f4b]"
-                  style={{ fontFamily: "var(--font-heading), serif" }}
-                >
-                  Solregn
-                </h1>
-
-                <p className="pb-1 text-base italic tracking-[0.05em] text-[#4f5f4b]/70">
-                  /suːlˈrɛɪn/
-                </p>
-              </div>
-
-              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
+              <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Solregn is a Norwegian word for sun-shower, the quiet meeting
                   of sunlight and rain. It describes a moment where two
@@ -284,18 +299,18 @@ export default function AboutPage() {
             <AtGlanceCard mobile />
 
             <section>
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+              <p className="mb-4 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
                 About the Founder
               </p>
 
               <h2
-                className="mb-7 text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em] text-[#4f5f4b]"
+                className="mb-6 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.04em] text-[#4f5f4b]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 Yashna Tulsiani
               </h2>
 
-              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
+              <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Hi, I’m Yashna. I facilitate online therapy for adults,
                   working across anxiety, trauma including relational and
@@ -332,13 +347,13 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="border-y border-[#d8d0c5]/80 py-10 sm:py-14">
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+            <section className="border-y border-[#d8d0c5]/80 py-10 sm:py-12">
+              <p className="mb-4 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
                 Therapeutic Approach
               </p>
 
               <h2
-                className="mb-8 text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em] text-[#4f5f4b]"
+                className="mb-7 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.04em] text-[#4f5f4b]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 Therapy here honours complexity rather than rushing resolution.
@@ -348,13 +363,13 @@ export default function AboutPage() {
                 {approachCards.map((card) => (
                   <div
                     key={card.title}
-                    className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6"
+                    className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-5"
                   >
-                    <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-[#c58a5c]">
+                    <p className="mb-3 text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
                       {card.title}
                     </p>
 
-                    <p className="text-sm leading-7 text-[#4f5f4b]/78">
+                    <p className="text-[0.82rem] leading-6 text-[#4f5f4b]/78">
                       {card.text}
                     </p>
                   </div>
@@ -363,11 +378,18 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+              <p className="mb-4 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
                 This Space May Support You With
               </p>
 
-              <div className="space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
+              <h2
+                className="mb-6 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.04em] text-[#4f5f4b]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                Insight and capacity, held together.
+              </h2>
+
+              <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Solregn Therapy may be a good fit if you are navigating
                   emotional overwhelm, anxiety, overthinking, trauma, burnout,
@@ -390,19 +412,19 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="bg-[#e7ded2]/55 px-6 py-10 sm:px-10 sm:py-12">
+            <section className="bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10">
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
                 Begin Here
               </p>
 
               <h2
-                className="max-w-3xl text-[clamp(2rem,4.2vw,3.2rem)] font-normal leading-[1.05] tracking-[0.035em]"
+                className="max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.035em]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 Therapy can begin exactly where you are.
               </h2>
 
-              <div className="mt-7 space-y-5 text-[1rem] leading-8 text-[#4f5f4b]/84 sm:text-[1.05rem] sm:leading-9">
+              <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Starting therapy can feel vulnerable. You do not need to have
                   everything figured out before you begin.
@@ -414,7 +436,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <BottomButton href="/services">Reach out to begin</BottomButton>
 
                 <BottomButton href="/contact">Contact</BottomButton>
