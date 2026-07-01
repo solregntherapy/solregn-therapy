@@ -305,29 +305,27 @@ function SiteNavigation() {
 function FAQIndex({ mobile = false }: { mobile?: boolean }) {
   if (mobile) {
     return (
-      <div className="mb-10 lg:hidden">
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+      <div className="mb-10 w-full max-w-full overflow-hidden lg:hidden">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
           On this page
         </p>
 
-        <div className="-mx-6 overflow-x-auto px-6 pb-2 sm:-mx-8 sm:px-8">
-          <div className="flex min-w-max gap-3">
-            {faqSections.map((section) => (
-              <a
-                href={`#${section.id}`}
-                key={section.id}
-                className="border border-[#d8d0c5]/85 bg-[#f7f3ed]/70 px-4 py-3 text-left shadow-[0_18px_50px_rgba(79,95,75,0.045)]"
-              >
-                <span className="block text-[0.64rem] font-medium uppercase tracking-[0.17em] text-[#c58a5c]">
-                  {section.label}
-                </span>
+        <div className="grid w-full max-w-full grid-cols-1 gap-3">
+          {faqSections.map((section) => (
+            <a
+              href={`#${section.id}`}
+              key={section.id}
+              className="block w-full min-w-0 max-w-full border border-[#d8d0c5]/85 bg-[#f7f3ed]/70 px-4 py-3 text-left shadow-[0_18px_50px_rgba(79,95,75,0.045)]"
+            >
+              <span className="block break-words text-[0.64rem] font-medium uppercase tracking-[0.15em] text-[#c58a5c]">
+                {section.label}
+              </span>
 
-                <span className="mt-1 block whitespace-nowrap text-[0.82rem] italic leading-6 text-[#4f5f4b]/80">
-                  {section.title}
-                </span>
-              </a>
-            ))}
-          </div>
+              <span className="mt-1 block break-words text-[0.82rem] italic leading-5 text-[#4f5f4b]/80">
+                {section.title}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     );
@@ -384,7 +382,7 @@ function BottomButton({
   children: string;
 }) {
   return (
-    <a href={href} className={bottomButtonClass}>
+    <a href={href} className={`${bottomButtonClass} w-full sm:w-auto`}>
       <span className="text-[#4f5f4b] transition group-hover:text-[#fff8ef]">
         {children}
       </span>
@@ -394,21 +392,21 @@ function BottomButton({
 
 export default function FAQsPage() {
   return (
-    <main className="min-h-screen bg-[#f4f1ec] text-[#4f5f4b]">
+    <main className="min-h-screen overflow-x-hidden bg-[#f4f1ec] text-[#4f5f4b]">
       <SiteNavigation />
 
-      <section className="px-6 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+      <section className="overflow-x-hidden px-6 pb-20 pt-32 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <FAQIndex />
 
-          <div className="space-y-12 sm:space-y-14">
+          <div className="min-w-0 max-w-full space-y-12 overflow-x-hidden sm:space-y-14">
             <section className="border-b border-[#d8d0c5]/80 pb-10 sm:pb-12">
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
+              <p className="mb-5 break-words text-xs font-medium uppercase tracking-[0.18em] text-[#c58a5c] sm:tracking-[0.24em]">
                 Frequently Asked Questions
               </p>
 
               <h1
-                className="mb-7 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.08] tracking-[0.03em] text-[#4f5f4b]"
+                className="mb-7 max-w-full break-words text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.08] tracking-[0.03em] text-[#4f5f4b]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 Before beginning therapy.
@@ -430,34 +428,34 @@ export default function FAQsPage() {
               <section
                 id={section.id}
                 key={section.id}
-                className="scroll-mt-32"
+                className="scroll-mt-32 overflow-x-hidden"
               >
                 <div className="mb-6">
-                  <p className="mb-4 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+                  <p className="mb-4 break-words text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c] sm:tracking-[0.22em]">
                     {section.label}
                   </p>
 
                   <h2
-                    className="max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.04em] text-[#4f5f4b]"
+                    className="max-w-full break-words text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.04em] text-[#4f5f4b]"
                     style={{ fontFamily: "var(--font-heading), serif" }}
                   >
                     {section.title}
                   </h2>
 
-                  <p className="mt-4 max-w-3xl text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                  <p className="mt-4 max-w-full break-words text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                     {section.description}
                   </p>
                 </div>
 
-                <div className="border-t border-[#d8d0c5]/80">
+                <div className="overflow-x-hidden border-t border-[#d8d0c5]/80">
                   {section.questions.map((item) => (
                     <details
                       key={item.question}
-                      className="group border-b border-[#d8d0c5]/80 py-4"
+                      className="group overflow-x-hidden border-b border-[#d8d0c5]/80 py-4"
                     >
-                      <summary className="flex cursor-pointer list-none items-start justify-between gap-5 [&::-webkit-details-marker]:hidden">
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 overflow-x-hidden [&::-webkit-details-marker]:hidden">
                         <h3
-                          className="max-w-3xl text-[1.03rem] font-normal leading-7 tracking-[0.01em] text-[#4f5f4b] sm:text-[1.08rem]"
+                          className="min-w-0 flex-1 break-words text-[1.03rem] font-normal leading-7 tracking-[0.01em] text-[#4f5f4b] sm:text-[1.08rem]"
                           style={{ fontFamily: "var(--font-heading), serif" }}
                         >
                           {item.question}
@@ -471,7 +469,7 @@ export default function FAQsPage() {
                         </span>
                       </summary>
 
-                      <p className="mt-4 max-w-3xl text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
+                      <p className="mt-4 max-w-full break-words text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                         {item.answer}
                       </p>
                     </details>
@@ -480,13 +478,13 @@ export default function FAQsPage() {
               </section>
             ))}
 
-            <section className="bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10">
-              <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+            <section className="overflow-x-hidden bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10">
+              <p className="mb-5 break-words text-xs font-medium uppercase tracking-[0.18em] text-[#c58a5c] sm:tracking-[0.22em]">
                 Begin Here
               </p>
 
               <h2
-                className="max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                className="max-w-full break-words text-[clamp(1.55rem,3vw,2.25rem)] font-normal leading-[1.08] tracking-[0.035em] text-[#4f5f4b]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
                 You can begin with a question, a note, or a little uncertainty.
