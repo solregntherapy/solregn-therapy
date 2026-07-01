@@ -223,7 +223,11 @@ export default function Home() {
 
         <div className="hero-vase" aria-hidden="true">
           <div className="vase-shadow" />
-          <img src="/images/hero-vase.png" alt="" className="vase-image" />
+          <img
+            src="/images/hero-sunflowers.png"
+            alt=""
+            className="vase-image"
+          />
         </div>
 
         <div className="stone-shelf" aria-hidden="true" />
