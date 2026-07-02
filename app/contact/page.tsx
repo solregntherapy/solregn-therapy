@@ -18,7 +18,6 @@ const navGroups = [
       { label: "Individual Therapy", href: "/services#individual-therapy" },
       { label: "Couples Therapy", href: "/services#couples-therapy" },
       { label: "Supervision", href: "/services#supervision" },
-      { label: "Workshops", href: "/services#workshops" },
     ],
   },
   {

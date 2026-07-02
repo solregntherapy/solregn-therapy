@@ -14,7 +14,6 @@ const navGroups = [
       { label: "Individual Therapy", href: "/services#individual-therapy" },
       { label: "Couples Therapy", href: "/services#couples-therapy" },
       { label: "Supervision", href: "/services#supervision" },
-      { label: "Workshops", href: "/services#workshops" },
     ],
   },
   {
@@ -30,7 +29,10 @@ const navGroups = [
     label: "Workshops",
     href: "/workshops",
     links: [
-      { label: "EAP & Workplace Support", href: "/workshops#eap-workplace-support" },
+      {
+        label: "EAP & Workplace Support",
+        href: "/workshops#eap-workplace-support",
+      },
       { label: "Webinars", href: "/workshops#webinars" },
       { label: "Trainings", href: "/workshops#trainings" },
     ],
@@ -40,7 +42,10 @@ const navGroups = [
     href: "/contact",
     links: [
       { label: "Enquiry Form", href: "/contact" },
-      { label: "Referral Network", href: "https://forms.gle/i9upugvyFmzVMBKL9" },
+      {
+        label: "Referral Network",
+        href: "https://forms.gle/i9upugvyFmzVMBKL9",
+      },
     ],
   },
 ];
@@ -55,7 +60,6 @@ const sidebarItems = [
   { label: "Individual therapy", href: "#individual-therapy" },
   { label: "Couples therapy", href: "#couples-therapy" },
   { label: "Supervision", href: "#supervision" },
-  { label: "Workshops", href: "#workshops" },
   { label: "How sessions work", href: "#how-sessions-work" },
   { label: "Booking note", href: "#booking-note" },
 ];
@@ -95,18 +99,6 @@ const services = [
       "For early-career and growing therapists seeking reflective support.",
       "Focuses on case understanding, therapist self-awareness, clinical decision-making, and emotional containment.",
       "The space is collaborative, thoughtful, and grounded in clinical depth.",
-    ],
-  },
-  {
-    number: "04",
-    title: "Workshops",
-    id: "workshops",
-    description:
-      "Psychoeducational and reflective workshops for groups, workplaces, and communities around emotional regulation, burnout, anxiety, relational awareness, and mental health literacy.",
-    points: [
-      "For organisations, teams, groups, and learning spaces.",
-      "Topics can include emotional resilience, stress, burnout, manager mental health literacy, and nervous-system awareness.",
-      "Workshop details, formats, and enquiry processes will be updated once the enquiry system is ready.",
     ],
   },
 ];
@@ -281,9 +273,9 @@ export default function ServicesPage() {
               <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Solregn Therapy offers reflective, trauma-informed, and
-                  relational mental health support for adults, couples,
-                  therapists, and groups. The work is paced with care, allowing
-                  space for complexity, emotional understanding, and long-term
+                  relational mental health support for adults, couples, and
+                  therapists. The work is paced with care, allowing space for
+                  complexity, emotional understanding, and long-term
                   psychological resilience.
                 </p>
 
