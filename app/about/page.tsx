@@ -195,21 +195,23 @@ function AtGlanceCard({ mobile = false }: { mobile?: boolean }) {
   }
 
   return (
-    <aside className="hidden h-fit max-h-[calc(100vh-8rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-28 lg:mt-8 lg:block">
-      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-        At a glance
-      </p>
+    <aside className="hidden lg:block lg:self-start">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-1/2 z-10 h-fit max-h-[calc(100vh-8rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
+        <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          At a glance
+        </p>
 
-      <div className="space-y-5 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
-        {atGlanceItems.map((item) => (
-          <div key={item.label} className="border-b border-[#d8d0c5]/80 pb-4">
-            <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
-              {item.label}
-            </p>
+        <div className="space-y-5 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+          {atGlanceItems.map((item) => (
+            <div key={item.label} className="border-b border-[#d8d0c5]/80 pb-4">
+              <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
+                {item.label}
+              </p>
 
-            <p className="mt-1">{item.text}</p>
-          </div>
-        ))}
+              <p className="mt-1">{item.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </aside>
   );

@@ -30,7 +30,10 @@ const navGroups = [
     label: "Workshops",
     href: "/workshops",
     links: [
-      { label: "Workplace Programs", href: "/workshops#workplace-programs" },
+      {
+        label: "EAP & Workplace Support",
+        href: "/workshops#eap-workplace-support",
+      },
       { label: "Webinars", href: "/workshops#webinars" },
       { label: "Trainings", href: "/workshops#trainings" },
     ],
@@ -57,48 +60,48 @@ const bottomButtonClass =
   "group inline-flex items-center justify-center border border-[#c58a5c] px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] transition hover:bg-[#c58a5c] hover:border-[#c58a5c] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c58a5c]";
 
 const pageLinks = [
-  { label: "Workplace Programs", href: "#workplace-programs" },
+  { label: "EAP & workplace support", href: "#eap-workplace-support" },
   { label: "Webinars", href: "#webinars" },
   { label: "Trainings", href: "#trainings" },
-  { label: "Common Themes", href: "#common-themes" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "How we shape it", href: "#how-we-shape-it" },
+  { label: "Enquire", href: "#enquire" },
 ];
 
 const workshopFormats = [
   {
-    id: "workplace-programs",
-    eyebrow: "For teams and organisations",
-    title: "Workplace Programs",
+    id: "eap-workplace-support",
+    eyebrow: "For organisations and teams",
+    title: "EAP & Workplace Psychological Support",
     description:
-      "Reflective, practical mental health sessions for teams navigating stress, emotional labour, communication strain, burnout, and change.",
+      "Thoughtful mental health support for workplaces that want more than a one-time motivational talk. Sessions can be shaped around stress, burnout, emotional resilience, psychological safety, manager sensitivity, communication strain, and workplace wellbeing.",
     bestFor: [
-      "Startups, growing teams, and people-first workplaces",
-      "Mental health awareness weeks or monthly wellbeing calendars",
-      "Teams needing language around stress, boundaries, and emotional regulation",
+      "Organisations building or strengthening their wellbeing support",
+      "Teams navigating stress, burnout, transition, conflict, or emotional load",
+      "HR teams, managers, and people-facing teams who need clearer mental health language",
     ],
-    themes: [
-      "Burnout and nervous system awareness",
-      "Emotional resilience at work",
-      "Manager mental health literacy",
-      "Communication, boundaries, and repair",
+    includes: [
+      "Psychoeducational workshops",
+      "Manager mental health literacy sessions",
+      "Reflective group sessions",
+      "Short wellbeing series or awareness-week sessions",
     ],
-    button: "Enquire for workplace programs",
+    button: "Enquire for workplace support",
   },
   {
     id: "webinars",
     eyebrow: "For public or closed groups",
     title: "Webinars",
     description:
-      "Gentle, accessible sessions that combine psychoeducation, reflection, and practical tools without making the space feel overly clinical.",
+      "Accessible, reflective sessions for groups who want to understand emotional patterns with warmth and clarity. Webinars can combine psychoeducation, simple practices, journaling prompts, grounding tools, and space for quiet reflection.",
     bestFor: [
       "Community spaces, colleges, online groups, and public workshops",
-      "Participants who want emotional clarity and self-understanding",
-      "Introductory mental health topics that need warmth and structure",
+      "Participants who want emotional clarity and practical tools",
+      "Introductory mental health topics that need warmth, structure, and accessibility",
     ],
-    themes: [
-      "Calming anxiety in the body",
-      "Working with shame and self-criticism",
-      "Understanding emotional overwhelm",
+    includes: [
+      "Anxiety and body-based calming",
+      "Shame and self-criticism",
+      "Emotional overwhelm",
       "Grief, change, and inner safety",
     ],
     button: "Enquire for a webinar",
@@ -108,13 +111,13 @@ const workshopFormats = [
     eyebrow: "For deeper learning spaces",
     title: "Trainings",
     description:
-      "Structured learning sessions for groups that need more depth, reflection, and practical frameworks for emotional support and mental health conversations.",
+      "More structured learning spaces for groups who need practical frameworks, emotionally sensitive language, and reflective tools for supporting people without over-functioning or taking on a therapist role.",
     bestFor: [
       "Managers, HR teams, educators, peer supporters, and care-facing professionals",
       "Groups that need both sensitivity and usable language",
-      "Teams wanting repeat sessions rather than a one-off talk",
+      "Teams wanting repeat sessions rather than a single awareness talk",
     ],
-    themes: [
+    includes: [
       "Responding to emotional distress",
       "Creating psychologically safer conversations",
       "Supporting without rescuing",
@@ -124,49 +127,18 @@ const workshopFormats = [
   },
 ];
 
-const commonThemes = [
-  {
-    title: "Emotional Resilience",
-    text: "Understanding stress, emotional capacity, regulation, and recovery without reducing resilience to productivity.",
-  },
-  {
-    title: "Anxiety & Overthinking",
-    text: "Making sense of anxious loops, body-based activation, uncertainty, and practical ways to return to steadiness.",
-  },
-  {
-    title: "Burnout & Work Stress",
-    text: "Exploring exhaustion, invisible labour, boundaries, and sustainable ways of working within real-life constraints.",
-  },
-  {
-    title: "Manager Mental Health Literacy",
-    text: "Helping leaders notice distress, respond with care, hold boundaries, and know when to refer.",
-  },
-  {
-    title: "Shame & Self-Worth",
-    text: "Creating language around self-criticism, comparison, inner safety, and gentler ways of relating to oneself.",
-  },
-  {
-    title: "Relationships & Boundaries",
-    text: "Exploring communication, emotional needs, repair, limits, and the difference between care and over-functioning.",
-  },
-];
-
 const processSteps = [
   {
-    title: "1. Share the context",
-    text: "Tell us about the group, setting, size, preferred format, and what the participants may be navigating.",
+    title: "Understand the need",
+    text: "We begin with the context: who the session is for, what the group may be carrying, what has prompted the enquiry, and what kind of support would feel useful.",
   },
   {
-    title: "2. Shape the session",
-    text: "The workshop is adapted to the audience, with a balance of psychoeducation, reflection, and practical tools.",
+    title: "Shape the session",
+    text: "The format is then adapted to the audience. It may include psychoeducation, reflection prompts, grounding practices, discussion pauses, or practical tools.",
   },
   {
-    title: "3. Facilitate gently",
-    text: "Sessions are held with care, spaciousness, and attention to emotional safety rather than forced participation.",
-  },
-  {
-    title: "4. Close with clarity",
-    text: "Participants leave with simple takeaways, reflective prompts, or tools they can return to after the session.",
+    title: "Hold it with care",
+    text: "The session is facilitated gently, without forced disclosure. Participants are invited to engage in ways that feel safe, respectful, and appropriate to the setting.",
   },
 ];
 
@@ -273,25 +245,19 @@ function BottomButton({
 function DesktopSidebar() {
   return (
     <aside className="hidden lg:block lg:self-start">
-      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-[calc(50%+3rem)] z-10 min-h-[calc(100vh-6.75rem)] max-h-[calc(100vh-6.75rem)] w-[18.5rem] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 xl:w-[24rem]">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-1/2 z-10 h-fit max-h-[calc(100vh-9rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
         <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
           Workshops
         </p>
 
         <h2
-          className="mb-5 text-[clamp(1.35rem,2.2vw,1.85rem)] font-normal leading-[1.1] tracking-[0.035em] text-[#4f5f4b]"
+          className="mb-5 text-[clamp(1.25rem,2vw,1.65rem)] font-normal leading-[1.1] tracking-[0.035em] text-[#4f5f4b]"
           style={{ fontFamily: "var(--font-heading), serif" }}
         >
-          Mental health spaces that feel human, reflective, and useful.
+          Psychological support for groups, workplaces, and learning spaces.
         </h2>
 
-        <p className="mb-7 text-[0.9rem] leading-7 text-[#4f5f4b]/78">
-          Workshops at Solregn are designed for organisations, communities, and
-          learning spaces that want mental health conversations with depth,
-          warmth, and practical grounding.
-        </p>
-
-        <div className="mb-8 space-y-2 text-[0.82rem] leading-6 text-[#4f5f4b]/82">
+        <div className="space-y-2 text-[0.82rem] leading-6 text-[#4f5f4b]/82">
           {pageLinks.map((link) => (
             <a
               key={link.label}
@@ -303,7 +269,9 @@ function DesktopSidebar() {
           ))}
         </div>
 
-        <BottomButton href={workshopMail}>Enquire</BottomButton>
+        <div className="mt-7">
+          <BottomButton href={workshopMail}>Enquire</BottomButton>
+        </div>
       </div>
     </aside>
   );
@@ -340,7 +308,7 @@ export default function WorkshopsPage() {
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <DesktopSidebar />
 
-          <div className="space-y-14">
+          <div className="space-y-12 sm:space-y-14">
             <MobileSidebar />
 
             <header>
@@ -352,57 +320,56 @@ export default function WorkshopsPage() {
                 className="mb-7 max-w-3xl text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.08] tracking-[0.03em] text-[#4f5f4b]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
-                Thoughtful mental health workshops for workplaces, groups, and
+                Thoughtful psychological support for workplaces, groups, and
                 reflective learning spaces.
               </h1>
 
               <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
-                  Solregn Therapy offers workshops and trainings that make
-                  emotional health easier to understand, speak about, and work
-                  with in everyday life.
+                  Solregn Therapy offers workshops, trainings, and EAP-aligned
+                  psychological support for spaces that want mental health
+                  conversations to feel grounded, human, and clinically
+                  thoughtful.
                 </p>
 
                 <p>
-                  Sessions are designed to be gentle, structured, and
-                  interactive without forcing disclosure. The aim is not to
-                  overwhelm participants with information, but to create a
-                  grounded space where insight, language, and practical tools
-                  can begin to take shape.
+                  Sessions are structured without becoming rigid, interactive
+                  without forcing disclosure, and practical without reducing
+                  emotional wellbeing to quick fixes.
                 </p>
               </div>
             </header>
 
             <section className="bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10">
               <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-                Start here
+                What this space is for
               </p>
 
               <h2
                 className="mb-5 max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
-                These sessions are useful when a group needs more than a
-                motivational talk, but less than a therapy room.
+                For groups that need emotional language, practical tools, and a
+                steady space to think.
               </h2>
 
               <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/82 sm:text-[0.96rem] sm:leading-8">
                 <p>
-                  Workshops can be adapted for teams, community groups,
-                  colleges, online gatherings, and organisations that want a
-                  trauma-informed and emotionally thoughtful approach to mental
-                  health.
+                  Workshops can be shaped for teams, organisations, colleges,
+                  community spaces, online groups, managers, HR teams, and
+                  care-facing professionals.
                 </p>
 
                 <p>
-                  Each session can include reflection prompts, grounding
-                  practices, discussion pauses, psychoeducation, and simple
-                  tools that participants can return to after the workshop.
+                  The focus is on making psychological ideas usable in everyday
+                  life: noticing stress earlier, understanding emotional
+                  patterns, building steadier responses, and knowing when deeper
+                  support may be needed.
                 </p>
               </div>
             </section>
 
-            <section className="space-y-7">
+            <section className="space-y-6">
               {workshopFormats.map((format) => (
                 <article
                   key={format.id}
@@ -442,11 +409,11 @@ export default function WorkshopsPage() {
 
                     <div>
                       <h3 className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#4f5f4b]/70">
-                        Possible themes
+                        Can include
                       </h3>
 
                       <ul className="space-y-3 text-[0.9rem] leading-7 text-[#4f5f4b]/80">
-                        {format.themes.map((item) => (
+                        {format.includes.map((item) => (
                           <li key={item} className="flex gap-3">
                             <span className="mt-[0.68rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#c58a5c]" />
                             <span>{item}</span>
@@ -465,58 +432,22 @@ export default function WorkshopsPage() {
               ))}
             </section>
 
-            <section id="common-themes" className="scroll-mt-32 space-y-7">
+            <section id="how-we-shape-it" className="scroll-mt-32 space-y-7">
               <div>
                 <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
-                  Browse by theme
+                  How we shape the work together
                 </p>
 
                 <h2
                   className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
                   style={{ fontFamily: "var(--font-heading), serif" }}
                 >
-                  Common workshop themes can be adapted depending on the
-                  audience, setting, and emotional needs of the group.
+                  The session is designed around the people in the room, not
+                  pulled from a generic workshop template.
                 </h2>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                {commonThemes.map((theme) => (
-                  <article
-                    key={theme.title}
-                    className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
-                  >
-                    <h3
-                      className="mb-3 text-[1.18rem] font-normal leading-snug tracking-[0.035em] text-[#4f5f4b]"
-                      style={{ fontFamily: "var(--font-heading), serif" }}
-                    >
-                      {theme.title}
-                    </h3>
-
-                    <p className="text-[0.9rem] leading-7 text-[#4f5f4b]/78">
-                      {theme.text}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section id="how-it-works" className="scroll-mt-32 space-y-7">
-              <div>
-                <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
-                  How it works
-                </p>
-
-                <h2
-                  className="max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
-                  style={{ fontFamily: "var(--font-heading), serif" }}
-                >
-                  The process is collaborative, so the session can meet the
-                  group where they actually are.
-                </h2>
-              </div>
-
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-5 sm:grid-cols-3">
                 {processSteps.map((step) => (
                   <article
                     key={step.title}
@@ -541,20 +472,23 @@ export default function WorkshopsPage() {
 
               <div className="space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/82 sm:text-[0.96rem] sm:leading-8">
                 <p>
-                  Workshops can support awareness, reflection, and practical
-                  skills. They are not a substitute for personal therapy,
-                  emergency care, or crisis intervention.
+                  Workshops and EAP-aligned sessions can support awareness,
+                  reflection, and practical skills. They are not a substitute
+                  for personal therapy, emergency care, or crisis intervention.
                 </p>
 
                 <p>
-                  For organisations, sessions can be shaped as a one-time
-                  workshop, a short series, or part of a broader mental health
-                  and wellbeing calendar.
+                  For organisations, support can be shaped as a one-time
+                  workshop, a short series, or part of a broader employee mental
+                  health and wellbeing calendar.
                 </p>
               </div>
             </section>
 
-            <section className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-8">
+            <section
+              id="enquire"
+              className="scroll-mt-32 border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-8"
+            >
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
                 Begin gently
               </p>
@@ -563,13 +497,13 @@ export default function WorkshopsPage() {
                 className="mb-5 max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
                 style={{ fontFamily: "var(--font-heading), serif" }}
               >
-                To plan a workshop, share the audience, format, group size, and
-                what you hope the session can hold.
+                To plan a session, share the audience, format, group size, and
+                what you hope the space can support.
               </h2>
 
               <p className="mb-7 text-[0.92rem] leading-7 text-[#4f5f4b]/82 sm:text-[0.96rem] sm:leading-8">
-                Until the booking and form backend are ready, workshop enquiries
-                can come through email.
+                Until the booking and form backend are ready, workshop and
+                workplace-support enquiries can come through email.
               </p>
 
               <BottomButton href={workshopMail}>

@@ -215,21 +215,23 @@ function OnThisPageCard({ mobile = false }: { mobile?: boolean }) {
   }
 
   return (
-    <aside className="hidden h-fit max-h-[calc(100vh-9rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2 lg:self-start">
-      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-        On this page
-      </p>
+    <aside className="hidden lg:block lg:self-start">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-1/2 z-10 h-fit max-h-[calc(100vh-9rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
+        <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          On this page
+        </p>
 
-      <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
-        {sidebarItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="block border-b border-[#d8d0c5]/80 pb-3 transition hover:text-[#c58a5c]"
-          >
-            {item.label}
-          </a>
-        ))}
+        <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+          {sidebarItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block border-b border-[#d8d0c5]/80 pb-3 transition hover:text-[#c58a5c]"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
       </div>
     </aside>
   );

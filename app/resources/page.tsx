@@ -269,28 +269,23 @@ function BottomButton({
 
 function DesktopSidebar() {
   return (
-    <aside className="hidden h-fit max-h-[calc(100vh-9rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2 lg:self-start">
-      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-        On this page
-      </p>
-
-      <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
-        {pageLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="block border border-[#d8d0c5]/70 bg-[#f4f1ec]/60 px-4 py-3 transition hover:border-[#c58a5c]/70 hover:text-[#4f5f4b]"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      <div className="mt-8 border-t border-[#d8d0c5]/80 pt-6">
-        <p className="text-[0.78rem] leading-6 text-[#4f5f4b]/72">
-          The website stays simple. The full resources live inside the Solregn
-          resource library.
+    <aside className="hidden lg:block lg:self-start">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-1/2 z-10 h-fit max-h-[calc(100vh-9rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
+        <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          On this page
         </p>
+
+        <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+          {pageLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="block border border-[#d8d0c5]/70 bg-[#f4f1ec]/60 px-4 py-3 transition hover:border-[#c58a5c]/70 hover:text-[#4f5f4b]"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
     </aside>
   );
@@ -408,8 +403,7 @@ export default function ResourcesPage() {
               <div className="mt-6 space-y-5 text-[0.92rem] leading-7 text-[#4f5f4b]/84 sm:text-[0.96rem] sm:leading-8">
                 <p>
                   Solregn Therapy is not an emergency or crisis response
-                  service. Email enquiries are not monitored for urgent
-                  support.
+                  service. Email enquiries are not monitored for urgent support.
                 </p>
 
                 <p>

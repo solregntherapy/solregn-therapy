@@ -332,43 +332,47 @@ function FAQIndex({ mobile = false }: { mobile?: boolean }) {
   }
 
   return (
-    <aside className="hidden h-fit max-h-[calc(100vh-8rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-28 lg:mt-8 lg:block">
-      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-        On this page
-      </p>
+    <aside className="hidden lg:block lg:self-start">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-[calc(50%+1cm)] z-10 h-fit max-h-[calc(100vh-5.5rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
+        <p className="mb-5 break-words text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          On this page
+        </p>
 
-      <div className="space-y-5 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
-        {faqSections.map((section) => (
+        <div className="space-y-4 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+          {faqSections.map((section) => (
+            <a
+              href={`#${section.id}`}
+              key={section.id}
+              className="block min-w-0 max-w-full border-b border-[#d8d0c5]/80 pb-4 transition hover:text-[#c58a5c]"
+            >
+              <p className="max-w-full break-words text-[0.64rem] font-medium uppercase tracking-[0.14em] text-[#c58a5c]">
+                {section.label}
+              </p>
+
+              <p className="mt-1 max-w-full break-words italic">
+                {section.title}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-6 border border-[#d8d0c5]/75 bg-[#f4f1ec]/70 p-4">
+          <p className="break-words text-[0.64rem] font-medium uppercase tracking-[0.14em] text-[#c58a5c]">
+            Still unsure?
+          </p>
+
+          <p className="mt-3 max-w-full break-words text-[0.82rem] leading-6 text-[#4f5f4b]/78">
+            You can reach out with a small note. You do not need to have
+            everything figured out first.
+          </p>
+
           <a
-            href={`#${section.id}`}
-            key={section.id}
-            className="block border-b border-[#d8d0c5]/80 pb-4 transition hover:text-[#c58a5c]"
+            href="/contact"
+            className="mt-5 inline-flex max-w-full break-words text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#4f5f4b] transition hover:text-[#c58a5c]"
           >
-            <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
-              {section.label}
-            </p>
-
-            <p className="mt-1 italic">{section.title}</p>
+            Contact Solregn
           </a>
-        ))}
-      </div>
-
-      <div className="mt-6 border border-[#d8d0c5]/75 bg-[#f4f1ec]/70 p-4">
-        <p className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
-          Still unsure?
-        </p>
-
-        <p className="mt-3 text-[0.82rem] leading-6 text-[#4f5f4b]/78">
-          You can reach out with a small note. You do not need to have
-          everything figured out first.
-        </p>
-
-        <a
-          href="/contact"
-          className="mt-5 inline-flex text-[0.68rem] font-semibold uppercase tracking-[0.17em] text-[#4f5f4b] transition hover:text-[#c58a5c]"
-        >
-          Contact Solregn
-        </a>
+        </div>
       </div>
     </aside>
   );

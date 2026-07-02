@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+const referralNetworkFormLink = "https://forms.gle/i9upugvyFmzVMBKL9";
+
 const navGroups = [
   {
     label: "About",
@@ -32,9 +34,12 @@ const navGroups = [
     label: "Workshops",
     href: "/workshops",
     links: [
-      { label: "Workplace Programs", href: "/workshops" },
-      { label: "Webinars", href: "/workshops" },
-      { label: "Trainings", href: "/workshops" },
+      {
+        label: "EAP & Workplace Support",
+        href: "/workshops#eap-workplace-support",
+      },
+      { label: "Webinars", href: "/workshops#webinars" },
+      { label: "Trainings", href: "/workshops#trainings" },
     ],
   },
   {
@@ -42,7 +47,11 @@ const navGroups = [
     href: "/contact",
     links: [
       { label: "Enquiry Form", href: "/contact" },
-      { label: "Referral Network", href: "/referral-network" },
+      {
+        label: "Referral Network",
+        href: referralNetworkFormLink,
+        external: true,
+      },
     ],
   },
 ];
@@ -57,6 +66,7 @@ const contactItems = [
   "Couples therapy",
   "Workshops",
   "Supervision",
+  "Referral network",
   "General enquiries",
 ];
 
@@ -85,7 +95,12 @@ function SiteNavigation() {
 
               <div className="dropdown-menu">
                 {group.links.map((link) => (
-                  <a key={link.label} href={link.href}>
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                  >
                     {link.label}
                   </a>
                 ))}
@@ -116,7 +131,12 @@ function SiteNavigation() {
 
                 <div className="mobile-sub-links">
                   {group.links.map((link) => (
-                    <a key={link.label} href={link.href}>
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                    >
                       {link.label}
                     </a>
                   ))}
@@ -163,40 +183,42 @@ function ContactSidebar({ mobile = false }: { mobile?: boolean }) {
   }
 
   return (
-    <aside className="hidden h-fit max-h-[calc(100vh-9rem)] overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7 lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2 lg:self-start">
-      <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
-        Contact
-      </p>
-
-      <h2
-        className="mb-5 text-[clamp(1.35rem,2.2vw,1.75rem)] font-normal leading-[1.1] tracking-[0.035em] text-[#4f5f4b]"
-        style={{ fontFamily: "var(--font-heading), serif" }}
-      >
-        Reach out for
-      </h2>
-
-      <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
-        {contactItems.map((item) => (
-          <p
-            key={item}
-            className="border-b border-[#d8d0c5]/80 pb-3 last:border-b-0 last:pb-0"
-          >
-            {item}
-          </p>
-        ))}
-      </div>
-
-      <div className="mt-6 border-t border-[#d8d0c5]/80 pt-5">
-        <p className="mb-2 text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
-          Email
+    <aside className="hidden lg:block lg:self-start">
+      <div className="fixed left-[max(3rem,calc((100vw-72rem)/2))] top-1/2 z-10 h-fit max-h-[calc(100vh-9rem)] w-[calc((min(72rem,calc(100vw-6rem))-5rem)*0.36)] -translate-y-1/2 overflow-y-auto border border-[#d8d0c5]/80 bg-[#f7f3ed]/65 p-6 shadow-[0_28px_80px_rgba(79,95,75,0.06)] sm:p-7">
+        <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
+          Contact
         </p>
 
-        <a
-          href="mailto:solregntherapy@gmail.com"
-          className="break-words text-[0.86rem] leading-6 text-[#4f5f4b]/84 underline underline-offset-4 transition hover:text-[#c58a5c]"
+        <h2
+          className="mb-5 text-[clamp(1.35rem,2.2vw,1.75rem)] font-normal leading-[1.1] tracking-[0.035em] text-[#4f5f4b]"
+          style={{ fontFamily: "var(--font-heading), serif" }}
         >
-          solregntherapy@gmail.com
-        </a>
+          Reach out for
+        </h2>
+
+        <div className="space-y-3 text-[0.82rem] leading-6 text-[#4f5f4b]/80">
+          {contactItems.map((item) => (
+            <p
+              key={item}
+              className="border-b border-[#d8d0c5]/80 pb-3 last:border-b-0 last:pb-0"
+            >
+              {item}
+            </p>
+          ))}
+        </div>
+
+        <div className="mt-6 border-t border-[#d8d0c5]/80 pt-5">
+          <p className="mb-2 text-[0.66rem] font-medium uppercase tracking-[0.18em] text-[#c58a5c]">
+            Email
+          </p>
+
+          <a
+            href="mailto:solregntherapy@gmail.com"
+            className="break-words text-[0.86rem] leading-6 text-[#4f5f4b]/84 underline underline-offset-4 transition hover:text-[#c58a5c]"
+          >
+            solregntherapy@gmail.com
+          </a>
+        </div>
       </div>
     </aside>
   );
@@ -257,12 +279,19 @@ function SubmitButton({ children }: { children: string }) {
 function LinkButton({
   href,
   children,
+  external = false,
 }: {
   href: string;
   children: string;
+  external?: boolean;
 }) {
   return (
-    <a href={href} className={bottomButtonClass}>
+    <a
+      href={href}
+      className={bottomButtonClass}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+    >
       <span className="text-[#4f5f4b] transition group-hover:text-[#fff8ef]">
         {children}
       </span>
@@ -306,16 +335,25 @@ export default function ContactPage() {
                 </p>
               </div>
 
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <LinkButton href="#contact-form">Send enquiry</LinkButton>
+
+                <LinkButton href={referralNetworkFormLink} external>
+                  Referral network
+                </LinkButton>
+              </div>
+
               <div className="mt-10">
                 <ContactSidebar mobile />
               </div>
             </section>
 
             <form
+              id="contact-form"
               action="mailto:solregntherapy@gmail.com"
               method="post"
               encType="text/plain"
-              className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
+              className="scroll-mt-32 border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7"
             >
               <div className="grid gap-6">
                 <div>
@@ -354,6 +392,7 @@ export default function ContactPage() {
                     <option value="Couples therapy">Couples therapy</option>
                     <option value="Workshops">Workshops</option>
                     <option value="Supervision">Supervision</option>
+                    <option value="Referral network">Referral network</option>
                     <option value="General enquiry">General enquiry</option>
                   </select>
                 </div>
@@ -381,6 +420,30 @@ export default function ContactPage() {
               </p>
             </form>
 
+            <section className="border border-[#d8d0c5]/80 bg-[#f7f3ed]/45 p-6 sm:p-7">
+              <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#c58a5c]">
+                Referral network
+              </p>
+
+              <h2
+                className="mb-5 max-w-3xl text-[clamp(1.45rem,2.6vw,1.95rem)] font-normal leading-[1.08] tracking-[0.035em]"
+                style={{ fontFamily: "var(--font-heading), serif" }}
+              >
+                For colleagues, organisations, and aligned referral
+                conversations.
+              </h2>
+
+              <p className="mb-7 text-[0.92rem] leading-7 text-[#4f5f4b]/82 sm:text-[0.96rem] sm:leading-8">
+                Practitioners and allied professionals can share their details
+                through the referral network form for future referral-fit
+                conversations.
+              </p>
+
+              <LinkButton href={referralNetworkFormLink} external>
+                Open referral form
+              </LinkButton>
+            </section>
+
             <section className="bg-[#e7ded2]/55 px-6 py-9 sm:px-10 sm:py-10">
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#c58a5c]">
                 A gentle note
@@ -401,14 +464,17 @@ export default function ContactPage() {
                 </p>
 
                 <p>
-                  The Resources page will hold grounding tools, support
-                  information, and crisis-support details as the website is
-                  built further.
+                  The Resources page holds grounding tools, support information,
+                  and crisis-support details.
                 </p>
               </div>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <LinkButton href="/resources">View resources</LinkButton>
+
+                <LinkButton href={referralNetworkFormLink} external>
+                  Referral network
+                </LinkButton>
 
                 <LinkButton href="mailto:solregntherapy@gmail.com">
                   Email Solregn Therapy
