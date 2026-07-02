@@ -71,7 +71,7 @@ export default function Home() {
 
               <div className="dropdown-menu">
                 <a href="/contact">Enquiry Form</a>
-                <a href="/referral-network">Referral Network</a>
+                <a href="https://forms.gle/i9upugvyFmzVMBKL9">Referral Network</a>
               </div>
             </div>
 
@@ -150,7 +150,7 @@ export default function Home() {
 
                 <div className="mobile-sub-links">
                   <a href="/contact">Enquiry Form</a>
-                  <a href="/referral-network">Referral Network</a>
+                  <a href="https://forms.gle/i9upugvyFmzVMBKL9">Referral Network</a>
                 </div>
               </details>
 

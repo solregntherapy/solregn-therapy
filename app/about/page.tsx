@@ -39,7 +39,7 @@ const navGroups = [
     href: "/contact",
     links: [
       { label: "Enquiry Form", href: "/contact" },
-      { label: "Referral Network", href: "/referral-network" },
+      { label: "Referral Network", href: "https://forms.gle/i9upugvyFmzVMBKL9" },
     ],
   },
 ];
