@@ -57,9 +57,9 @@ export default function Home() {
               </div>
 
               <div className="dropdown-menu">
-                <a href="/workshops">Workplace Programs</a>
-                <a href="/workshops">Webinars</a>
-                <a href="/workshops">Trainings</a>
+                <a href="/workshops#eap-workplace-support">EAP & Workplace Support</a>
+                <a href="/workshops#webinars">Webinars</a>
+                <a href="/workshops#trainings">Trainings</a>
               </div>
             </div>
 
@@ -136,9 +136,9 @@ export default function Home() {
                 </summary>
 
                 <div className="mobile-sub-links">
-                  <a href="/workshops">Workplace Programs</a>
-                  <a href="/workshops">Webinars</a>
-                  <a href="/workshops">Trainings</a>
+                  <a href="/workshops#eap-workplace-support">EAP & Workplace Support</a>
+                  <a href="/workshops#webinars">Webinars</a>
+                  <a href="/workshops#trainings">Trainings</a>
                 </div>
               </details>
 

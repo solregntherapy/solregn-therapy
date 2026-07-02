@@ -29,9 +29,9 @@ const navGroups = [
     label: "Workshops",
     href: "/workshops",
     links: [
-      { label: "Workplace Programs", href: "/workshops" },
-      { label: "Webinars", href: "/workshops" },
-      { label: "Trainings", href: "/workshops" },
+      { label: "EAP & Workplace Support", href: "/workshops#eap-workplace-support" },
+      { label: "Webinars", href: "/workshops#webinars" },
+      { label: "Trainings", href: "/workshops#trainings" },
     ],
   },
   {
